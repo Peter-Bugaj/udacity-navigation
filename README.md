@@ -1,6 +1,8 @@
 # Deep Reinforcement Learning - Udacity
 ## Project: Navigation
 
+-
+
 ### Description
 This repository contains the implemtation for training an agent to navigate around an environment, collecting bananas. The agent is rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. The goal of the agent is to perform in an intelligent way, collecting as many yellow bananas as possible. 
 
@@ -45,6 +47,7 @@ jupyter notebook
 **Notes**
 The python/requirements.txt contains the necessary libraries that need to be installed for the environment. As of writing this report, the python used for this project was downgraded to version 3.7.9, as this worked best with tensorflow. However you might need to update the requirements.txt file later in the future if libraries become deprecated, etc.
 
+-
 
 ### Project Overview
 The script for training and testing the agent is found in the file **Navigation.ipynb**. This file starts of by installing the appropriate libraries, starting the environment, and running a few basic experiments, like reading the state space of the environment, and doing sample steps. Later in the script the agent is tested with different epsilon values, is trained and tested with the variables leading to the best performance, and lastly the agent is test with a double DQN implementation.
@@ -78,6 +81,7 @@ The agent was implemented based on the exercise provided by Udacity. The code fo
 **https://medium.com/@qempsil0914/deep-q-learning-part2-double-deep-q-network-double-dqn-b8fc9212bbb2** 
 
 
+-
 
 ### Training / Optimizations
 The agent was trained by learning an optimal policy through a process called Deep Q-Learning, used for maximizing the rewards within the environment. This was done by the agent interacting within the environment hundreds of times, collecting observations along the way, and constantly updating the Q-function for mapping the states to the actions yielding the best reward.
@@ -111,8 +115,31 @@ The target neural network was updated in the **learn** function in **dqn_agent.p
 #### Double DQN
 Another issue addressed was the possible overestimation of action values. In the basic approach, the agent always tries to choose the best action for each given state. However in the beginning, the agent knows very little about the environment, and by choosing such actions, a lot of noise is introduced when learning, leading to over estimations in the update procedure later on.
 
-Double DQN helps solve this problem by using two different Q-functions, Q and Q’. Even if both Q and Q' are both noisy, their noise can be viewed as uniform distribution. The proof of this can be found here:
+Double DQN helps solve this problem by using two different Q-functions, Q and Q’. Function Q is used for selecting the best action with maximum value for the next state. Function Q' is then used for calculating the expected value, using the action selected by Q. Even if both Q and Q' are both noisy, their noise can be viewed as uniform distribution, as proven here:
 
 **H. van Hasselt 2010, Section 3** https://papers.nips.cc/paper/3964-double-q-learning
 
-Function Q is used for selecting the best action with maximum for the next state. Function Q' is then used for calculating the expected value, using the action selected by Q.
+-
+
+### Experimentation
+#### Benchmark
+The benchmark was set to having an average score of +15, computed over the last one hundred episodes.
+
+####  Test conducted.
+A number of different experiments were executed, for trying out different values for the epsilon decay, as well as for the minimum value of epsilon. The minimum value of epsilon did not seem to have much impact, as was expected, however it did prevent the average score from reaching the benchmark is some cases. For example, the average score was never reached when the minimum epsilon value was set to 0.1, and instead the average score would start to fluctuate between 12 and 13.
+
+However changing the epsilon decay did result in a noticeable difference. It was noted that by reducing the epsilon decay value to values such as 0.85, the agent became more greedy much faster over time. This also sometimes lead to the agent learning faster, receiving an average score of +13 in just 165 episodes, or an average score of +15 in 415 episodes! However such an agent did not do as well during testing.
+
+#### Best performing agent
+The best performing agent was discovered when the minimum epsilon value was kept at 0.01, with the epsilon decay factor set to 0.95. This allowed the agent to reach an average score of +15 in 525 episodes.
+
+Further details of this performance are documented in the notebook itself, found in **Navigation.ipynb**
+
+-
+
+### Future  Work
+#### Prioritized Learning
+One option for improving the training the agent would be to prioritize the experience replay. Instead of choosing tuples only at random during the sampling process, it might be more helpful to choose only those most helpful for improving the agent. One way this could be accomplished is by assigning a larger probability to the tuples which resulted in a larger degree of error. This would allow the agent to pick up the experiences with bigger surprises.
+
+#### Increasing the Q-network
+Another option would be to add additional layers to the neural network, or by adding more nodes per layer. This could help the agent estimate the Q-function better. The expected result would be for the agent taking more time to learn, in exchange to it making more strategic choices.
