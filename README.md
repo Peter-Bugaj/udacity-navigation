@@ -109,28 +109,3 @@ Function Q is used for selecting the best action with maximum for the next state
 
 
 
-
-4. Run Experiments
-Now that the various components of our algorithm are in place, it's time to measure the agent's performance within the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
-
-The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
-
-
-
- 
-5. Select best performing agent
-The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
-
-
-
-The complete set of results and steps can be found in this notebook.
-
-Also, here is a video showing the agent's progress as it goes from randomly selecting actions to learning a policy that maximizes rewards.
-
-
-
- 
-Future Improvements
-Test the replay buffer — Implement a way to enable/disable the replay buffer. As mentioned before, all agents utilized the replay buffer. Therefore, the test results don't measure the impact the replay buffer has on performance.
-Add prioritized experience replay — Rather than selecting experience tuples randomly, prioritized replay selects experiences based on a priority value that is correlated with the magnitude of error. This can improve learning by increasing the probability that rare and important experience vectors are sampled.
-Replace conventional exploration heuristics with Noisy DQN — This approach is explained here in this research paper. The key takeaway is that parametric noise is added to the weights to induce stochasticity to the agent's policy, yielding more efficient exploration.
