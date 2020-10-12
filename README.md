@@ -13,25 +13,31 @@ The agent was given the option of moving backwards, moving forwards, turning lef
 
 ### Getting started
 Start creating the environment by creating an isolated python environment (this should be done with python 3):
+
 ``bash
 sudo -H pip3 install --upgrade pip
 ``
+
 ``bash
 sudo -H pip3 install virtualenv
 ``
+
 ``bash
 virtualenv drl_project
 ``
 
 Next enable the environment and install Jupyter Notebook:
+
 ``bash
 source drl_project/bin/activate
 ``
+
 ``bash
 pip install jupyter
 ``
 
 Finally run jupyter notebook as follows:
+
 ``bash
 jupyter notebook
 ``
@@ -48,12 +54,15 @@ The agent had a state space of 37 dimensions, which included the agent's velocit
 
 #### Environment
 The environment consisted of open space that allowed the agent to navigate around, collecting bananas. The agent was rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. This environment was downloaded from Unity, from the following list of links:
-
+---
 **Linux:** https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip
+---
 **Mac OSX:** https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip
+---
 **Windows (64-bit):** https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip
-
+---
 When running the code inside **Navigation.ipynb**, the environment is loaded using the following line:
+
 ``bash
 env = UnityEnvironment(file_name="./Banana.app")
 ``
@@ -65,6 +74,7 @@ The model was implemented based on the exercises provided by Udacity. The code c
 
 #### Agent
 The agent was implemented based on the exercise provided by Udacity. The code for it can be found in the file under **dqn_agent.py**. The only additional change made to this file was to support double DQN's, which was implemented based on an online article description here:
+---
 **https://medium.com/@qempsil0914/deep-q-learning-part2-double-deep-q-network-double-dqn-b8fc9212bbb2** 
 
 
@@ -102,10 +112,7 @@ The target neural network was updated in the **learn** function in **dqn_agent.p
 Another issue addressed was the possible overestimation of action values. In the basic approach, the agent always tries to choose the best action for each given state. However in the beginning, the agent knows very little about the environment, and by choosing such actions, a lot of noise is introduced when learning, leading to over estimations in the update procedure later on.
 
 Double DQN helps solve this problem by using two different Q-functions, Q and Q’. Even if both Q and Q' are both noisy, their noise can be viewed as uniform distribution. The proof of this can be found here:
+---
 **H. van Hasselt 2010, Section 3** https://papers.nips.cc/paper/3964-double-q-learning
 
 Function Q is used for selecting the best action with maximum for the next state. Function Q' is then used for calculating the expected value, using the action selected by Q.
-
-
-
-
