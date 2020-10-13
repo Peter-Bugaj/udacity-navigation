@@ -1,8 +1,7 @@
 # Deep Reinforcement Learning - Udacity
 ## Project: Navigation
-
- -
-
+  
+  
 ### Description
 This repository contains the implemtation for training an agent to navigate around an environment, collecting bananas. The agent is rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. The goal of the agent is to perform in an intelligent way, collecting as many yellow bananas as possible. 
 
@@ -11,8 +10,8 @@ The benchmark average score for the agent was set to +15 across a window of one 
 
 #### Navigating
 The agent was given the option of moving backwards, moving forwards, turning left, or turning right. It had a state space that consisted of 37 dimensions, which included the agent's velocity and a ray-based perception of objects around the agent's forward direction.
-
-
+  
+  
 ### Getting started
 Start creating the environment by creating an isolated python environment (this should be done with python 3):
 
@@ -46,9 +45,8 @@ jupyter notebook
 
 **Notes**
 The python/requirements.txt contains the necessary libraries that need to be installed for the environment. As of writing this report, the python used for this project was downgraded to version 3.7.9, as this worked best with tensorflow. However you might need to update the requirements.txt file later in the future if libraries become deprecated, etc.
-
- -
-
+  
+  
 ### Project Overview
 The script for training and testing the agent is found in the file **Navigation.ipynb**. This file starts of by installing the appropriate libraries, starting the environment, and running a few basic experiments, like reading the state space of the environment, and doing sample steps. Later in the script the agent is tested with different epsilon values, is trained and tested with the variables leading to the best performance, and lastly the agent is test with a double DQN implementation.
 
@@ -79,10 +77,8 @@ The model was implemented based on the exercises provided by Udacity. The code c
 The agent was implemented based on the exercise provided by Udacity. The code for it can be found in the file under **dqn_agent.py**. The only additional change made to this file was to support double DQN's, which was implemented based on an online article description here:
 
 **https://medium.com/@qempsil0914/deep-q-learning-part2-double-deep-q-network-double-dqn-b8fc9212bbb2** 
-
-
- -
-
+  
+  
 ### Training / Optimizations
 The agent was trained by learning an optimal policy through a process called Deep Q-Learning, used for maximizing the rewards within the environment. This was done by the agent interacting within the environment hundreds of times, collecting observations along the way, and constantly updating the Q-function for mapping the states to the actions yielding the best reward.
 
@@ -110,17 +106,16 @@ In the simple case, the temporal difference is computed as the difference betwee
 To fixed this, the current and approximated target neural network were separated into a local Q-network and a target Q-network. The local Q-network was then used for predicting the best actions to take, and for populating the experience buffer. Every **n** number of steps, the experience buffer would be used for training, where the gradient error between the predicted actions and actions from the target network would be computed, and the target Q-network would be updated.
 
 The target neural network was updated in the **learn** function in **dqn_agent.py**, and the actions from the local Q-network were prediced inside the **act** function.
-
-
+  
+  
 #### Double DQN
 Another issue addressed was the possible overestimation of action values. In the basic approach, the agent always tries to choose the best action for each given state. However in the beginning, the agent knows very little about the environment, and by choosing such actions, a lot of noise is introduced when learning, leading to over estimations in the update procedure later on.
 
 Double DQN helps solve this problem by using two different Q-functions, Q and Q’. Function Q is used for selecting the best action with maximum value for the next state. Function Q' is then used for calculating the expected value, using the action selected by Q. Even if both Q and Q' are both noisy, their noise can be viewed as uniform distribution, as proven here:
 
 **H. van Hasselt 2010, Section 3** https://papers.nips.cc/paper/3964-double-q-learning
-
- -
-
+  
+  
 ### Experimentation
 #### Benchmark
 The benchmark was set to having an average score of +15, computed over the last one hundred episodes.
@@ -140,9 +135,8 @@ The graph showing how the agent trained is shown below:
 ![Average scores graph](https://github.com/Peter-Bugaj/udacity-navigation/blob/master/images/average-scores-graph-best.png)
 
 Further details of this performance are documented in the notebook itself, found in **Navigation.ipynb**
-
- -
-
+  
+  
 ### Future  Work
 #### Prioritized Learning
 One option for improving the training the agent would be to prioritize the experience replay. Instead of choosing tuples only at random during the sampling process, it might be more helpful to choose only those most helpful for improving the agent. One way this could be accomplished is by assigning a larger probability to the tuples which resulted in a larger degree of error. This would allow the agent to pick up the experiences with bigger surprises.
