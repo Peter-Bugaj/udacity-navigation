@@ -1,7 +1,7 @@
 # Deep Reinforcement Learning - Udacity
 ## Project: Navigation
 
--
+ -
 
 ### Description
 This repository contains the implemtation for training an agent to navigate around an environment, collecting bananas. The agent is rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. The goal of the agent is to perform in an intelligent way, collecting as many yellow bananas as possible. 
@@ -47,7 +47,7 @@ jupyter notebook
 **Notes**
 The python/requirements.txt contains the necessary libraries that need to be installed for the environment. As of writing this report, the python used for this project was downgraded to version 3.7.9, as this worked best with tensorflow. However you might need to update the requirements.txt file later in the future if libraries become deprecated, etc.
 
--
+ -
 
 ### Project Overview
 The script for training and testing the agent is found in the file **Navigation.ipynb**. This file starts of by installing the appropriate libraries, starting the environment, and running a few basic experiments, like reading the state space of the environment, and doing sample steps. Later in the script the agent is tested with different epsilon values, is trained and tested with the variables leading to the best performance, and lastly the agent is test with a double DQN implementation.
@@ -81,7 +81,7 @@ The agent was implemented based on the exercise provided by Udacity. The code fo
 **https://medium.com/@qempsil0914/deep-q-learning-part2-double-deep-q-network-double-dqn-b8fc9212bbb2** 
 
 
--
+ -
 
 ### Training / Optimizations
 The agent was trained by learning an optimal policy through a process called Deep Q-Learning, used for maximizing the rewards within the environment. This was done by the agent interacting within the environment hundreds of times, collecting observations along the way, and constantly updating the Q-function for mapping the states to the actions yielding the best reward.
@@ -119,7 +119,7 @@ Double DQN helps solve this problem by using two different Q-functions, Q and Qâ
 
 **H. van Hasselt 2010, Section 3** https://papers.nips.cc/paper/3964-double-q-learning
 
--
+ -
 
 ### Experimentation
 #### Benchmark
@@ -137,9 +137,11 @@ The graph showing how the agent trained is shown below:
 
 ![Average scores](https://github.com/Peter-Bugaj/udacity-navigation/blob/master/images/average-scores-best.png)
 
+![Average scores graph](https://github.com/Peter-Bugaj/udacity-navigation/blob/master/images/average-scores-graph-best.png)
+
 Further details of this performance are documented in the notebook itself, found in **Navigation.ipynb**
 
--
+ -
 
 ### Future  Work
 #### Prioritized Learning
