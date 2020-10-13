@@ -136,7 +136,7 @@ The best performing agent was discovered when the minimum epsilon value was kept
 The graph showing how the agent trained is shown below:
 
 ![Average scores]
-(https://github.com/Peter-Bugaj/udacity-navigation/images/average-scores-best.png)
+(https://github.com/Peter-Bugaj/udacity-navigation/blob/master/images/average-scores-best.png)
 
 Further details of this performance are documented in the notebook itself, found in **Navigation.ipynb**
 
