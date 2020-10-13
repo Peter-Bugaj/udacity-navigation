@@ -5,6 +5,8 @@
 ### Description
 This repository contains the implemtation for training an agent to navigate around an environment, collecting bananas. The agent is rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. The goal of the agent is to perform in an intelligent way, collecting as many yellow bananas as possible. 
 
+![Intro](https://github.com/Peter-Bugaj/udacity-navigation/blob/master/images/banana.gif)
+
 #### Benchmark
 The benchmark average score for the agent was set to +15 across a window of one hundred consecutive episodes. This benchmark was set slightly higher than the provided benchmark of +13 for the purpose of experimentation to see just how well the agent could perform.
 
@@ -48,10 +50,10 @@ The python/requirements.txt contains the necessary libraries that need to be ins
   
   
 ### Project Overview
-The script for training and testing the agent is found in the file **Navigation.ipynb**. This file starts of by installing the appropriate libraries, starting the environment, and running a few basic experiments, like reading the state space of the environment, and doing sample steps. Later in the script the agent is tested with different epsilon values, is trained and tested with the variables leading to the best performance, and lastly the agent is test with a double DQN implementation.
+The script for training and testing the agent is found in the file **Navigation.ipynb**. This file starts of by installing the appropriate libraries, starting the environment, and running a few basic experiments, like reading the state space of the environment, and doing sample steps. Later in the script the agent is tested with different epsilon values, is trained and tested with the variables leading to the best performance, and lastly the agent is tested with a double DQN implementation.
 
 #### State space exploration
-The agent had a state space of 37 dimensions, which included the agent's velocity and a ray-based perception of objects around the agent's forward direction. At any point within the environment, the agent had four action which it could take: moving backwards, forwards, turning left or turning right.
+The agent had a state space of 37 dimensions, which included the agent's velocity and a ray-based perception of objects around the agent's forward direction. At any point within the environment, the agent had four actions which it could take: moving backwards, forwards, turning left or turning right.
 
 #### Environment
 The environment consisted of open space that allowed the agent to navigate around, collecting bananas. The agent was rewarded one point for collecting a yellow banana, and negative one for collecting a blue banana. This environment was downloaded from Unity, from the following list of links:
@@ -126,7 +128,7 @@ A number of different experiments were executed, for trying out different values
 However changing the epsilon decay did result in a noticeable difference. It was noted that by reducing the epsilon decay value to values such as 0.85, the agent became more greedy much faster over time. This also sometimes lead to the agent learning faster, receiving an average score of +13 in just 165 episodes, or an average score of +15 in 415 episodes! However such an agent did not do as well during testing.
 
 #### Best performing agent
-The best performing agent was discovered when the minimum epsilon value was kept at 0.01, with the epsilon decay factor set to 0.95. This allowed the agent to reach an average score of +15 in 525 episodes.
+The best performing agent was discovered when the minimum epsilon value was kept at 0.01, with the epsilon decay factor set to 0.95. This allowed the agent to reach an average score of +15 in 292 episodes.
 
 The graph showing how the agent trained is shown below:
 
