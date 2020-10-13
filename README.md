@@ -133,6 +133,9 @@ However changing the epsilon decay did result in a noticeable difference. It was
 #### Best performing agent
 The best performing agent was discovered when the minimum epsilon value was kept at 0.01, with the epsilon decay factor set to 0.95. This allowed the agent to reach an average score of +15 in 525 episodes.
 
+The graph showing how the agent trained is shown below:
+(https://github.com/Peter-Bugaj/udacity-navigation/images/average-scores-best.png)
+
 Further details of this performance are documented in the notebook itself, found in **Navigation.ipynb**
 
 -
