@@ -116,6 +116,7 @@ Double DQN helps solve this problem by using two different Q-functions, Q and Q�
 
 **H. van Hasselt 2010, Section 3** https://papers.nips.cc/paper/3964-double-q-learning
   
+  
 #### Hyperparameters Used
 While each optimization method was implemented during training, various hyperparameters were introduced to help tune the performance. During experience replay, the state, action, reward, and next state tuples where stored inside a buffer of size **BUFFER\_SIZE** . The random samples taken from the buffer where then chosen to be of size **BATCH\_SIZE**. This happened at a frequency specified by **UPDATE\_EVERY** to control how often the networks were to be updated.
 
@@ -132,17 +133,21 @@ With the loss computed and backward propagation applied, the target network was 
 ```bash
 θ_target = TAU*θ_local + (1 - TAU)*θ_target
 ````
-
-**TAU** was 
-
+  
+  
 At the end, the hyperparameter were kept as defautl, set to the following values:
 
-BUFFER_SIZE = int(1e5): replay buffer size
-BATCH_SIZE = 64: minibatch size
-GAMMA = 0.99: discount factor
-TAU = 1e-3: for soft update of target parameters
-LR = 5e-4: learning rate
-UPDATE_EVERY = 4: how often to update the network
+**BUFFER\_SIZE** = int(1e5): replay buffer size
+
+**BATCH\_SIZE** = 64: minibatch size
+
+**GAMMA** = 0.99: discount factor
+
+**TAU** = 1e-3: for soft update of target parameters
+
+**LR** = 5e-4: learning rate
+
+**UPDATE\_EVERY** = 4: how often to update the network
   
     
 ### Experimentation
