@@ -135,7 +135,7 @@ With the loss computed and backward propagation applied, the target network was 
 ````
   
   
-At the end, the hyperparameter were kept as defautl, set to the following values:
+At the end, the hyperparameter were kept as default, set to the following values:
 
 **BUFFER\_SIZE** = int(1e5): replay buffer size
 
@@ -149,7 +149,8 @@ At the end, the hyperparameter were kept as defautl, set to the following values
 
 **UPDATE\_EVERY** = 4: how often to update the network
   
-    
+`
+  
 ### Experimentation
 #### Benchmark
 The benchmark was set to having an average score of +15, computed over the last one hundred episodes.
